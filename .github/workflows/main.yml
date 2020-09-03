@@ -1,5 +1,5 @@
 name: Quick Publish & Deploy
-on: push
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,9 +8,9 @@ jobs:
     - name: Setup
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.X
+        dotnet-version: 3.1.x
     - name: Publish
-      run: dotnet publish 'CommonToolsOnline/CommonToolsOnline.csproj' --configuration Release --output 'CommonToolsOnline/Output'
+      run: dotnet publish './CommonToolsOnline/CommonToolsOnline.csproj' --configuration Release --output './CommonToolsOnline/Output'
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
