@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonToolsOnline", "CommonToolsOnline\CommonToolsOnline.csproj", "{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DEA2442-B914-453C-A1E5-C2E9C1F31F32}
+	EndGlobalSection
+EndGlobal
