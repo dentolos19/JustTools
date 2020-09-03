@@ -2,7 +2,7 @@
 
 This app is dedicated to hosting common tools used by many people. This is currently work-in-progress!
 
-![https://dentolos19.github.io/previews/commontoolsonline.png]
+![Preview][https://dentolos19.github.io/previews/commontoolsonline.png]
 
 ### Contributing
 

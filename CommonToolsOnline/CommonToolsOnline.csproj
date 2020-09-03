@@ -5,6 +5,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <Authors>Dennise Catolos</Authors>
     <Copyright>Copyright © 2020</Copyright>
+    <Product>Common Tools Online</Product>
   </PropertyGroup>
 
   <ItemGroup>
