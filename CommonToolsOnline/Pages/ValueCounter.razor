@@ -1,24 +1,24 @@
 ﻿@page "/ValueCounter"
 
-<h1>Counter</h1>
+<h1>Value Counter</h1>
 
 <p>The current value is @_currentValue</p>
 
-<button class="btn btn-primary" @onclick="IncrementValue">Increment Value</button>
+<button class="btn btn-primary" @ onclick="Increment">Increment Value</button>
 
-<button class="btn btn-primary" @onclick="DecrementValue">Decrement Value</button>
+<button class="btn btn-primary" @ onclick="Decrement">Decrement Value</button>
 
 @code
 {
 
     private int _currentValue;
 
-    private void IncrementValue()
+    private void Increment()
     {
         _currentValue++;
     }
 
-    private void DecrementValue()
+    private void Decrement()
     {
         _currentValue--;
     }

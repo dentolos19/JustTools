@@ -1,24 +1,25 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">Common Tools Online</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+    <button class="navbar-toggler" @ onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass" @ onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span aria-hidden="true" class="oi oi-home"></span> Home
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="ValueCounter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Value Counter
+                <span aria-hidden="true" class="oi oi-plus"></span> Value Counter
             </NavLink>
-        </li><li class="nav-item px-3">
+        </li>
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="PasswordGenerator">
-                <span class="oi oi-plus" aria-hidden="true"></span> Password Generator
+                <span aria-hidden="true" class="oi oi-credit-card"></span> Password Generator
             </NavLink>
         </li>
     </ul>
