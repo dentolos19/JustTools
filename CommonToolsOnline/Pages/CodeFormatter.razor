@@ -1,11 +1,18 @@
-﻿@page "/JsonFormatter"
+﻿@page "/CodeFormatter"
+
 @using System.Text.Json
 
-<h1>Json Formatter</h1>
+<h1>Code Formatter</h1>
 
 <EditForm Model="@_form" OnValidSubmit="@FormSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    <div class="form-group">
+        <InputSelect class="form-control" @bind-Value="@_form.Language">
+            <option value="">Select Language...</option>
+            <option value="JSON">JSON</option>
+        </InputSelect>
+    </div>
     <div class="form-group">
         <InputTextArea class="form-control" @bind-Value="_form.Code" />
     </div>
@@ -15,14 +22,24 @@
 @code
 {
 
-    private JsonFormatterForm _form;
+    private CodeFormatterForm _form;
 
     protected override void OnInitialized()
     {
-        _form = new JsonFormatterForm();
+        _form = new CodeFormatterForm();
     }
 
     private void FormSubmit()
+    {
+        switch (_form.Language.ToLower())
+        {
+            case "json":
+                FormatJson();
+                break;
+        }
+    }
+
+    private void FormatJson()
     {
         var element = JsonSerializer.Deserialize<JsonElement>(_form.Code);
         _form.Code = JsonSerializer.Serialize(element, new JsonSerializerOptions { WriteIndented = true });
