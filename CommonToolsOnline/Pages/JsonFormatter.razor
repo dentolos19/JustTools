@@ -1,0 +1,31 @@
+﻿@page "/JsonFormatter"
+@using System.Text.Json
+
+<h1>Json Formatter</h1>
+
+<EditForm Model="@_form" OnValidSubmit="@FormSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <InputTextArea class="form-control" @bind-Value="_form.Code" />
+    </div>
+    <button class="form-control" type="submit">Format Code</button>
+</EditForm>
+
+@code
+{
+
+    private JsonFormatterForm _form;
+
+    protected override void OnInitialized()
+    {
+        _form = new JsonFormatterForm();
+    }
+
+    private void FormSubmit()
+    {
+        var element = JsonSerializer.Deserialize<JsonElement>(_form.Code);
+        _form.Code = JsonSerializer.Serialize(element, new JsonSerializerOptions { WriteIndented = true });
+    }
+
+}
