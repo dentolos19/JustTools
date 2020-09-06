@@ -11,10 +11,6 @@ jobs:
         dotnet-version: 3.1.x
     - name: Publish Project
       run: dotnet publish ./CommonToolsOnline/CommonToolsOnline.csproj --configuration Release --output ./CommonToolsOnline/Output
-    - name: Delete Debug Index
-      run: rm ./CommonToolsOnline/Output/wwwroot/index.html
-    - name: Add Release Index
-      run: mv ./CommonToolsOnline/Output/wwwroot/index-release.html ./CommonToolsOnline/Output/wwwroot/index.html
     - name: Deploy To GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
