@@ -1,6 +1,9 @@
 ﻿@page "/CodeFormatter"
 
 @using System.Text.Json
+@using System.Xml
+@using System.Xml.Linq
+@using System.Text
 
 <h1>Code Formatter</h1>
 
@@ -9,8 +12,8 @@
     <ValidationSummary />
     <div class="form-group">
         <InputSelect class="form-control" @bind-Value="@_form.Language">
-            <option value="">Select Language...</option>
             <option value="JSON">JSON</option>
+            <option value="XML">XML</option>
         </InputSelect>
     </div>
     <div class="form-group">
@@ -36,6 +39,9 @@
             case "json":
                 FormatJson();
                 break;
+            case "xml":
+                FormatXml();
+                break;
         }
     }
 
@@ -43,6 +49,19 @@
     {
         var element = JsonSerializer.Deserialize<JsonElement>(_form.Code);
         _form.Code = JsonSerializer.Serialize(element, new JsonSerializerOptions { WriteIndented = true });
+    }
+
+    private void FormatXml()
+    {
+        var builder = new StringBuilder();
+        var element = XElement.Parse(_form.Code);
+        var settings = new XmlWriterSettings();
+        settings.OmitXmlDeclaration = true;
+        settings.Indent = true;
+        settings.NewLineOnAttributes = true;
+        using (var writer = XmlWriter.Create(builder, settings))
+            element.Save(writer);
+        _form.Code = builder.ToString();
     }
 
 }
