@@ -10,7 +10,9 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: Publish Project
-      run: dotnet publish ./CommonToolsOnline/CommonToolsOnline.csproj --configuration Release --output ./CommonToolsOnline/Output
+      run: dotnet publish CommonToolsOnline/CommonToolsOnline.csproj --configuration Release --output CommonToolsOnline/Output
+    - name: Disable Jekyll
+      run: touch CommonToolsOnline/Output/wwwroot/.nojekyll
     - name: Deploy To GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
