@@ -2,39 +2,44 @@
 <html>
 
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <title>Common Tools Online</title>
-    <base href="/"/>
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/app.css" rel="stylesheet"/>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <script>
+        window.clipboardCopy = {
+            copyText: function(text) { navigator.clipboard.writeText(text); }
+        };
+    </script>
 </head>
 
 <body>
-<app>Loading...</app>
-<script type="text/javascript">
-    (function(l) {
-        if (l.search) {
-            var q = {};
-            l.search.slice(1).split('&').forEach(function(v) {
-                var a = v.split('=');
-                q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-            });
-            if (q.p !== undefined) {
-                window.history.replaceState(null,
-                    null,
-                    l.pathname.slice(0, -1) +
-                    (q.p || '') +
-                    (q.q ? ('?' + q.q) : '') +
-                    l.hash
-                );
+    <app>Loading...</app>
+    <script type="text/javascript">
+        (function (l) {
+            if (l.search) {
+                var q = {};
+                l.search.slice(1).split('&').forEach(function (v) {
+                    var a = v.split('=');
+                    q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+                });
+                if (q.p !== undefined) {
+                    window.history.replaceState(null,
+                        null,
+                        l.pathname.slice(0, -1) +
+                        (q.p || '') +
+                        (q.q ? ('?' + q.q) : '') +
+                        l.hash
+                    );
+                }
             }
-        }
-    }(window.location))
-</script>
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-</div>
-<script src="_framework/blazor.webassembly.js"></script>
+        }(window.location))
+    </script>
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
 </body>
 </html>
