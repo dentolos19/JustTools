@@ -2,9 +2,43 @@
 
 <h1>Text Formatter</h1>
 
-This tool is currently work-in-progress! Come again soon.
+<EditForm Model="@_form" OnValidSubmit="@FormSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <InputSelect class="form-control" @bind-Value="@_form.Format">
+            <option value="Reverse">Reverse</option>
+        </InputSelect>
+    </div>
+    <div class="form-group">
+        <InputTextArea class="form-control" @bind-Value="_form.Text" />
+    </div>
+    <button class="form-control" type="submit">Format Text</button>
+</EditForm>
 
 @code
 {
-    // TODO
+
+    private TextFormatterForm _form;
+
+    protected override void OnInitialized()
+    {
+        _form = new TextFormatterForm();
+    }
+
+    private void FormSubmit()
+    {
+        switch (_form.Format.ToLower())
+        {
+            case "reverse":
+                FormatReverse();
+                break;
+        }
+    }
+
+    private void FormatReverse()
+    {
+        _form.Text = new string(_form.Text.Reverse().ToArray());
+    }
+
 }
