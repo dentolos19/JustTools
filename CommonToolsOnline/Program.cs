@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Radzen;
 
 namespace CommonToolsOnline
 {
@@ -15,6 +16,10 @@ namespace CommonToolsOnline
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
             builder.Services.AddScoped(provider => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddTransient(provider => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<DialogService>();
+            builder.Services.AddScoped<NotificationService>();
+            builder.Services.AddScoped<TooltipService>();
             await builder.Build().RunAsync();
         }
 

@@ -2,7 +2,7 @@
 
 <h1>Text Formatter</h1>
 
-<EditForm Model="@_form" OnValidSubmit="@FormSubmit">
+<EditForm Model="@_form" OnValidSubmit="@FormatText">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="form-group">
@@ -26,7 +26,7 @@
         _form = new TextFormatterForm();
     }
 
-    private void FormSubmit()
+    private void FormatText()
     {
         switch (_form.Format.ToLower())
         {

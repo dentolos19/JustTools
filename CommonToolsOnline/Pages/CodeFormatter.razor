@@ -7,7 +7,7 @@
 
 <h1>Code Formatter</h1>
 
-<EditForm Model="@_form" OnValidSubmit="@FormSubmit">
+<EditForm Model="@_form" OnValidSubmit="@FormatCode">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="form-group">
@@ -32,7 +32,7 @@
         _form = new CodeFormatterForm();
     }
 
-    private void FormSubmit()
+    private void FormatCode()
     {
         switch (_form.Language.ToLower())
         {
