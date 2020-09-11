@@ -1,9 +1,12 @@
-﻿namespace CommonToolsOnline.Forms
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CommonToolsOnline.Forms
 {
 
     public class PasswordGeneratorForm
     {
 
+        [Range(8, 64, ErrorMessage = "The accepted password length is between 8 to 64.")]
         public int PasswordLength { get; set; } = 16;
 
         public bool UseUppercaseAlphabets { get; set; } = true;
