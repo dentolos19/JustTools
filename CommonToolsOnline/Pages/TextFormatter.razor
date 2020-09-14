@@ -1,17 +1,38 @@
 ﻿@page "/TextFormatter"
+@using System.Text
 
 <h1>Text Formatter</h1>
 
 <EditForm Model="@_form" OnValidSubmit="@FormatText">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <dataannotationsvalidator/>
+    <validationsummary/>
     <div class="form-group">
         <InputSelect class="form-control" @bind-Value="@_form.Format">
+
+            <option disabled></option>
+            <option disabled>Common Formatting Options</option>
+            <option disabled></option>
+
             <option value="Reverse">Reverse</option>
+
+            <option disabled></option>
+            <option disabled>Advanced Formatting Options</option>
+            <option disabled></option>
+
+            <option value="EscapeDataString">Escape Data String</option>
+            <option value="UnescapeDataString">Unescape Data String</option>
+
+            <option disabled></option>
+            <option disabled>Encoding/Decoding Options</option>
+            <option disabled></option>
+
+            <option value="EncodeBase64">Encode To Base64</option>
+            <option value="DecodeBase64">Decode From Base64</option>
+
         </InputSelect>
     </div>
     <div class="form-group">
-        <InputTextArea class="form-control" @bind-Value="_form.Text" />
+        <InputTextArea class="form-control" @bind-Value="_form.Text"/>
     </div>
     <button class="form-control" type="submit">Format Text</button>
 </EditForm>
@@ -30,8 +51,31 @@
     {
         switch (_form.Format.ToLower())
         {
+
+    // Common Formatting Options
+
             case "reverse":
                 FormatReverse();
+                break;
+
+    // Advanced Formatting Options
+
+            case "escapedatastring":
+                EscapeDataString();
+                break;
+
+            case "unescapedatastring":
+                UnescapeDataString();
+                break;
+
+    // Encoding/Decoding Options
+
+            case "encodebase64":
+                EncodeBase64();
+                break;
+
+            case "decodebase64":
+                DecodeBase64();
                 break;
         }
     }
@@ -39,6 +83,28 @@
     private void FormatReverse()
     {
         _form.Text = new string(_form.Text.Reverse().ToArray());
+    }
+
+    private void EscapeDataString()
+    {
+        _form.Text = Uri.EscapeDataString(_form.Text);
+    }
+
+    private void UnescapeDataString()
+    {
+        _form.Text = Uri.UnescapeDataString(_form.Text);
+    }
+
+    private void EncodeBase64()
+    {
+        var bytes = Encoding.UTF8.GetBytes(_form.Text);
+        _form.Text = Uri.EscapeUriString(Convert.ToBase64String(bytes));
+    }
+
+    private void DecodeBase64()
+    {
+        var bytes = Convert.FromBase64String(Uri.UnescapeDataString(_form.Text));
+        _form.Text = Encoding.UTF8.GetString(bytes);
     }
 
 }
