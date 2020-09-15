@@ -1,5 +1,4 @@
 ﻿@page "/TextFormatter"
-@using System.Text
 
 <h1>Text Formatter</h1>
 
@@ -75,7 +74,7 @@
                 break;
 
             case "decodebase64":
-                _form.Text = Utilities.DecodeFromBase64(_form.Text)
+                _form.Text = Utilities.DecodeFromBase64(_form.Text);
                 break;
         }
     }
