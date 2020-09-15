@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace CommonToolsOnline
 {
 
-    public class Program
+    public static class Program
     {
 
         public static async Task Main(string[] args)

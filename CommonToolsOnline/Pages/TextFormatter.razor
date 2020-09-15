@@ -4,8 +4,8 @@
 <h1>Text Formatter</h1>
 
 <EditForm Model="@_form" OnValidSubmit="@FormatText">
-    <dataannotationsvalidator/>
-    <validationsummary/>
+    <dataannotationsvalidator />
+    <validationsummary />
     <div class="form-group">
         <InputSelect class="form-control" @bind-Value="@_form.Format">
 
@@ -32,7 +32,7 @@
         </InputSelect>
     </div>
     <div class="form-group">
-        <InputTextArea class="form-control" @bind-Value="_form.Text"/>
+        <InputTextArea class="form-control" @bind-Value="_form.Text" />
     </div>
     <button class="form-control" type="submit">Format Text</button>
 </EditForm>
@@ -52,59 +52,32 @@
         switch (_form.Format.ToLower())
         {
 
-    // Common Formatting Options
+            // Common Formatting Options
 
             case "reverse":
-                FormatReverse();
+                _form.Text = new string(_form.Text.Reverse().ToArray());
                 break;
 
-    // Advanced Formatting Options
+            // Advanced Formatting Options
 
             case "escapedatastring":
-                EscapeDataString();
+                _form.Text = Uri.EscapeDataString(_form.Text);
                 break;
 
             case "unescapedatastring":
-                UnescapeDataString();
+                _form.Text = Uri.UnescapeDataString(_form.Text);
                 break;
 
-    // Encoding/Decoding Options
+            // Encoding/Decoding Options
 
             case "encodebase64":
-                EncodeBase64();
+                _form.Text = Utilities.EncodeToBase64(_form.Text);
                 break;
 
             case "decodebase64":
-                DecodeBase64();
+                _form.Text = Utilities.DecodeFromBase64(_form.Text)
                 break;
         }
-    }
-
-    private void FormatReverse()
-    {
-        _form.Text = new string(_form.Text.Reverse().ToArray());
-    }
-
-    private void EscapeDataString()
-    {
-        _form.Text = Uri.EscapeDataString(_form.Text);
-    }
-
-    private void UnescapeDataString()
-    {
-        _form.Text = Uri.UnescapeDataString(_form.Text);
-    }
-
-    private void EncodeBase64()
-    {
-        var bytes = Encoding.UTF8.GetBytes(_form.Text);
-        _form.Text = Uri.EscapeUriString(Convert.ToBase64String(bytes));
-    }
-
-    private void DecodeBase64()
-    {
-        var bytes = Convert.FromBase64String(Uri.UnescapeDataString(_form.Text));
-        _form.Text = Encoding.UTF8.GetString(bytes);
     }
 
 }
