@@ -18,8 +18,8 @@
             <option disabled>Advanced Formatting Options</option>
             <option disabled></option>
 
-            <option value="EscapeDataString">Escape Data String</option>
-            <option value="UnescapeDataString">Unescape Data String</option>
+            <option value="ToURLFormat">Convert To URL Format</option>
+            <option value="FromURLFormat">Convert From URL Format</option>
 
             <option disabled></option>
             <option disabled>Encoding/Decoding Options</option>
@@ -59,11 +59,11 @@
 
             // Advanced Formatting Options
 
-            case "escapedatastring":
+            case "tourlformat":
                 _form.Text = Uri.EscapeDataString(_form.Text);
                 break;
 
-            case "unescapedatastring":
+            case "fromurlformat":
                 _form.Text = Uri.UnescapeDataString(_form.Text);
                 break;
 
