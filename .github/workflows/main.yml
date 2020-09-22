@@ -6,9 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.2
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.7.0
+      uses: actions/setup-dotnet@v1.6.0
       with:
-        dotnet-version: 3.1
+        dotnet-version: '3.1.x'
     - name: Publish Project
       run: dotnet publish CommonToolsOnline/CommonToolsOnline.csproj --configuration Release --output CommonToolsOnline/Output
     - name: Disable Jekyll
