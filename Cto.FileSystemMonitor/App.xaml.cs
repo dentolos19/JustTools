@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Cto.FileSystemMonitor.Graphics;
 
 namespace Cto.FileSystemMonitor
 {
@@ -8,7 +9,7 @@ namespace Cto.FileSystemMonitor
 
         private void Initialize(object sender, StartupEventArgs args)
         {
-            // TODO
+            new WnMain().Show();
         }
 
     }

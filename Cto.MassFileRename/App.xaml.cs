@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Cto.MassFileRename.Graphics;
 
 namespace Cto.MassFileRename
 {
@@ -8,7 +9,7 @@ namespace Cto.MassFileRename
 
         private void Initialize(object sender, StartupEventArgs args)
         {
-            // TODO
+            new WnMain().Show();
         }
 
     }

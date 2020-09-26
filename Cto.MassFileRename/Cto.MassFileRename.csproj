@@ -4,6 +4,14 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <AssemblyName>MassFileRename</AssemblyName>
+    <StartupObject>Cto.MassFileRename.App</StartupObject>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AdonisUI" Version="1.16.0" />
+    <PackageReference Include="AdonisUI.ClassicTheme" Version="1.16.0" />
+  </ItemGroup>
 
 </Project>
