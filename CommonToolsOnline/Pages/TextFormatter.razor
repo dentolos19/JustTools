@@ -8,22 +8,16 @@
     <div class="form-group">
         <InputSelect class="form-control" @bind-Value="@_form.Format">
 
-            <option disabled></option>
-            <option disabled>Common Formatting Options</option>
-            <option disabled></option>
+            <optgroup label="Common Formatting Options" />
 
             <option value="Reverse">Reverse</option>
 
-            <option disabled></option>
-            <option disabled>Advanced Formatting Options</option>
-            <option disabled></option>
+            <optgroup label="Advanced Formatting Options" />
 
             <option value="ToURLFormat">Convert To URL Format</option>
             <option value="FromURLFormat">Convert From URL Format</option>
 
-            <option disabled></option>
-            <option disabled>Encoding/Decoding Options</option>
-            <option disabled></option>
+            <optgroup label="Encoding/Decoding Options" />
 
             <option value="EncodeBase64">Encode To Base64</option>
             <option value="DecodeBase64">Decode From Base64</option>
