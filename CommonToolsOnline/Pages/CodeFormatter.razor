@@ -8,8 +8,8 @@
 <h3>Code Formatter</h3>
 
 <EditForm Model="@_form" OnValidSubmit="@FormatCode">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <div class="form-group">
         <InputSelect class="form-control" @bind-Value="@_form.Language">
             <option value="JSON">JSON</option>
@@ -17,7 +17,7 @@
         </InputSelect>
     </div>
     <div class="form-group">
-        <InputTextArea class="form-control" @bind-Value="_form.Code"/>
+        <InputTextArea class="form-control" @bind-Value="@_form.Code"/>
     </div>
     <button class="form-control" type="submit">Format Code</button>
 </EditForm>

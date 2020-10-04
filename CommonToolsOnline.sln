@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonToolsOnline", "CommonToolsOnline\CommonToolsOnline.csproj", "{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cto.MassFileRename", "Cto.MassFileRename\Cto.MassFileRename.csproj", "{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cto.MassFileRename", "Cto.MassFileRename\Cto.MassFileRename.csproj", "{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cto.FileSystemMonitor", "Cto.FileSystemMonitor\Cto.FileSystemMonitor.csproj", "{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cto.FileSystemMonitor", "Cto.FileSystemMonitor\Cto.FileSystemMonitor.csproj", "{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

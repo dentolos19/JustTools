@@ -19,7 +19,6 @@ namespace Cto.FileSystemMonitor.Graphics
     {
 
         private bool _isPaused;
-
         private bool _isRunning;
         private FileSystemWatcher[] _watchers;
 
@@ -30,7 +29,7 @@ namespace Cto.FileSystemMonitor.Graphics
             RemoveButton.IsEnabled = false;
         }
 
-        private void Start(object sender, RoutedEventArgs args)
+        private void StartMonitoring(object sender, RoutedEventArgs args)
         {
             if (_isRunning)
             {
@@ -87,7 +86,7 @@ namespace Cto.FileSystemMonitor.Graphics
             _isRunning = true;
         }
 
-        private void Stop(object sender, RoutedEventArgs args)
+        private void StopMonitoring(object sender, RoutedEventArgs args)
         {
             if (!_isRunning)
                 return;
@@ -102,32 +101,32 @@ namespace Cto.FileSystemMonitor.Graphics
             StopButton.IsEnabled = false;
         }
 
-        private void Remove(object sender, RoutedEventArgs args)
+        private void RemoveActivity(object sender, RoutedEventArgs args)
         {
-            var answer = AdonisMessageBox.Show("Are you sure that you want to remove this monitored activity?", "FsWatcher", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
+            var answer = AdonisMessageBox.Show("Are you sure that you want to remove this monitored activity?", "FileSystemMonitor", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
             if (answer == AdonisMessageBoxResult.Yes)
                 ActivityList.Items.Remove(ActivityList.SelectedItem);
         }
 
-        private void Clear(object sender, RoutedEventArgs args)
+        private void ClearActivities(object sender, RoutedEventArgs args)
         {
             if (!(ActivityList.Items.Count >= 1))
                 return;
-            var answer = AdonisMessageBox.Show("Are you sure that you want to clear all monitored activities?", "FsWatcher", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
+            var answer = AdonisMessageBox.Show("Are you sure that you want to clear all monitored activities?", "FileSystemMonitor", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
             if (answer == AdonisMessageBoxResult.Yes)
                 ActivityList.Items.Clear();
         }
 
-        private void Save(object sender, RoutedEventArgs args)
+        private void SaveToFile(object sender, RoutedEventArgs args)
         {
             if (_isRunning)
             {
-                AdonisMessageBox.Show("You can't save while the monitor is running!", "FsWatcher", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
+                AdonisMessageBox.Show("You can't save while the monitor is running!", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
                 return;
             }
             if (!(ActivityList.Items.Count >= 1))
             {
-                AdonisMessageBox.Show("You must at least have one monitored activity in the list.", "FsWatcher", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
+                AdonisMessageBox.Show("You must at least have one monitored activity in the list.", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
                 return;
             }
             var dialog = new SaveFileDialog { Filter = "FsWatcher Log|*.fsl" };
@@ -136,14 +135,14 @@ namespace Cto.FileSystemMonitor.Graphics
             var items = ActivityList.Items.OfType<ActivityItemBinding>();
             var data = JsonConvert.SerializeObject(items, Formatting.Indented);
             File.WriteAllText(dialog.FileName, data);
-            AdonisMessageBox.Show("Saved activities into file!", "FsWatcher", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
+            AdonisMessageBox.Show("Saved activities into file!", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
         }
 
-        private void Load(object sender, RoutedEventArgs args)
+        private void LoadFromFile(object sender, RoutedEventArgs args)
         {
             if (_isRunning)
             {
-                AdonisMessageBox.Show("You can't load while the monitor is running!", "FsWatcher", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
+                AdonisMessageBox.Show("You can't load while the monitor is running!", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
                 return;
             }
             var dialog = new OpenFileDialog { Filter = "FsWatcher Log|*.fsl" };
@@ -154,7 +153,7 @@ namespace Cto.FileSystemMonitor.Graphics
             ActivityList.Items.Clear();
             foreach (var item in items)
                 ActivityList.Items.Add(item);
-            AdonisMessageBox.Show("Loaded activities from file!", "FsWatcher", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
+            AdonisMessageBox.Show("Loaded activities from file!", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Information);
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -164,13 +163,21 @@ namespace Cto.FileSystemMonitor.Graphics
 
         private void UpdateActivitySelection(object sender, SelectionChangedEventArgs args)
         {
-            RemoveButton.IsEnabled = ActivityList.SelectedItem != null;
+            if (ActivityList.SelectedItem == null)
+            {
+                RemoveButton.IsEnabled = false;
+                CopyLocationButton.IsEnabled = false;
+            }
+            else
+            {
+                RemoveButton.IsEnabled = true;
+                CopyLocationButton.IsEnabled = true;
+            }
         }
 
         private void CopyFileLocation(object sender, RoutedEventArgs args)
         {
-            if (ActivityList.SelectedItem != null)
-                Clipboard.SetText(((ActivityItemBinding)ActivityList.SelectedItem).FileLocation);
+            Clipboard.SetText(((ActivityItemBinding)ActivityList.SelectedItem).FileLocation);
         }
 
     }

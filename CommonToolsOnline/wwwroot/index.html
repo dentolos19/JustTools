@@ -2,18 +2,17 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <title>Common Tools Online</title>
-    <base href="/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/app.css" />
-    <script type="text/javascript" src="interop.js"></script>
+    <base href="/"/>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
 </head>
 
 <body>
 <app>Loading...</app>
-<script src="_framework/blazor.webassembly.js"></script>
+<script type="text/javascript" src="_framework/blazor.webassembly.js"></script>
 <script type="text/javascript">
     (function(l) {
         if (l.search) {
@@ -34,9 +33,12 @@
         }
     }(window.location))
 </script>
+<script type="text/javascript" src="assets/interop.js"></script>
 <div id="blazor-error-ui">
     An unhandled error has occurred.
+    <!-- ReSharper disable UnknownCssClass -->
     <a class="reload" href="">Reload</a>
+    <!-- ReSharper restore UnknownCssClass -->
     <a class="dismiss">🗙</a>
 </div>
 </body>

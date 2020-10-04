@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Ookii.Dialogs.Wpf;
@@ -7,36 +9,22 @@ using AdonisMessageBoxButton = AdonisUI.Controls.MessageBoxButton;
 using AdonisMessageBoxImage = AdonisUI.Controls.MessageBoxImage;
 using AdonisMessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
-namespace Cto.FileSystemMonitor.Graphics
+namespace Cto.MassFileRename.Graphics
 {
 
-    public partial class WnStart
+    public partial class WnAnalyze
     {
 
-        public WnStart()
+        public WnAnalyze()
         {
             InitializeComponent();
-            RemoveButton.IsEnabled = false;
+            UpdateDirectorySelection(null, null);
+            ScanRecursivelyOption.IsChecked = true;
         }
 
         public string[] Directories { get; private set; }
 
-        private void Start(object sender, RoutedEventArgs args)
-        {
-            if (!(DirectoryList.Items.Count >= 1))
-            {
-                AdonisMessageBox.Show("You must at least have one directory in the list!", "FileSystemMonitor", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Stop);
-                return;
-            }
-            Directories = DirectoryList.Items.OfType<string>().ToArray();
-            DialogResult = true;
-            Close();
-        }
-
-        private void Cancel(object sender, RoutedEventArgs args)
-        {
-            Close();
-        }
+        public bool ScanRecursively { get; private set; }
 
         private void AddDirectory(object sender, RoutedEventArgs args)
         {
@@ -53,7 +41,7 @@ namespace Cto.FileSystemMonitor.Graphics
 
         private void RemoveDirectory(object sender, RoutedEventArgs args)
         {
-            var answer = AdonisMessageBox.Show("Are you sure that you want remove this directory?", "FileSystemMonitor", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
+            var answer = AdonisMessageBox.Show("Are you sure that you want to remove this directory?", "MassFileRename", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
             if (answer == AdonisMessageBoxResult.Yes)
                 DirectoryList.Items.Remove(DirectoryList.SelectedItem);
         }
@@ -62,9 +50,27 @@ namespace Cto.FileSystemMonitor.Graphics
         {
             if (!(DirectoryList.Items.Count >= 1))
                 return;
-            var answer = AdonisMessageBox.Show("Are you sure that you want to clear all directories?", "FileSystemMonitor", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
+            var answer = AdonisMessageBox.Show("Are you sure that you want to clear all directories?", "MassFileRename", AdonisMessageBoxButton.YesNo, AdonisMessageBoxImage.Question);
             if (answer == AdonisMessageBoxResult.Yes)
                 DirectoryList.Items.Clear();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs args)
+        {
+            Close();
+        }
+
+        private void Analyze(object sender, RoutedEventArgs args)
+        {
+            if (!(DirectoryList.Items.Count >= 1))
+            {
+                AdonisMessageBox.Show("You must at least have one directory in the list!", "MassFileRename", AdonisMessageBoxButton.OK, AdonisMessageBoxImage.Stop);
+                return;
+            } 
+            Directories = DirectoryList.Items.OfType<string>().ToArray();
+            ScanRecursively = ScanRecursivelyOption.IsChecked == true;
+            DialogResult = true;
+            Close();
         }
 
         private void UpdateDirectorySelection(object sender, SelectionChangedEventArgs args)

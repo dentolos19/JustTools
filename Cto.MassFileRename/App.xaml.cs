@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Threading;
 using Cto.MassFileRename.Graphics;
 
 namespace Cto.MassFileRename
@@ -10,6 +11,12 @@ namespace Cto.MassFileRename
         private void Initialize(object sender, StartupEventArgs args)
         {
             new WnMain().Show();
+        }
+
+        private void HandleExceptions(object sender, DispatcherUnhandledExceptionEventArgs args)
+        {
+            args.Handled = true;
+            new WnException(args.Exception).ShowDialog();
         }
 
     }

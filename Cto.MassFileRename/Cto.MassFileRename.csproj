@@ -7,11 +7,14 @@
     <AssemblyName>MassFileRename</AssemblyName>
     <StartupObject>Cto.MassFileRename.App</StartupObject>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+    <Copyright>Copyright © 2020</Copyright>
+    <Authors>Dennise Catolos</Authors>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AdonisUI" Version="1.16.0" />
     <PackageReference Include="AdonisUI.ClassicTheme" Version="1.16.0" />
+    <PackageReference Include="Ookii.Dialogs.Wpf.NETCore" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

@@ -10,14 +10,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="0,0,0,10">
-            <Button x:Name="StartButton" Margin="10,10,10,0" Content="Start Monitoring" Height="30" Click="Start"/>
-            <Button x:Name="StopButton" Margin="10,10,10,0" Content="Stop Monitoring" Height="30" Click="Stop"/>
+            <Button x:Name="StartButton" Margin="10,10,10,0" Content="Start Monitoring" Height="30" Click="StartMonitoring"/>
+            <Button x:Name="StopButton" Margin="10,10,10,0" Content="Stop Monitoring" Height="30" Click="StopMonitoring"/>
             <Separator Margin="10,10,10,0"/>
-            <Button x:Name="RemoveButton" Margin="10,10,10,0" Content="Remove Activity" Height="30" Click="Remove"/>
-            <Button Margin="10,10,10,0" Content="Clear Activities" Height="30" Click="Clear"/>
+            <Button x:Name="RemoveButton" Margin="10,10,10,0" Content="Remove Activity" Height="30" Click="RemoveActivity"/>
+            <Button Margin="10,10,10,0" Content="Clear Activities" Height="30" Click="ClearActivities"/>
             <Separator Margin="10,10,10,0"/>
-            <Button Margin="10,10,10,0" Content="Save To File" Height="30" Click="Save"/>
-            <Button Margin="10,10,10,0" Content="Load From File" Height="30" Click="Load"/>
+            <Button Margin="10,10,10,0" Content="Save To File" Height="30" Click="SaveToFile"/>
+            <Button Margin="10,10,10,0" Content="Load From File" Height="30" Click="LoadFromFile"/>
             <Separator Margin="10,10,10,0"/>
             <Button Margin="10,10,10,0" Content="Exit" Height="30" Click="Exit"/>
         </StackPanel>
@@ -33,7 +33,7 @@
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Copy File Location" Click="CopyFileLocation"/>
+                    <MenuItem x:Name="CopyLocationButton" Header="Copy File Location" Click="CopyFileLocation"/>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

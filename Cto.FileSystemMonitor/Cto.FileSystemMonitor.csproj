@@ -7,6 +7,9 @@
     <AssemblyName>FileSystemMonitor</AssemblyName>
     <StartupObject>Cto.FileSystemMonitor.App</StartupObject>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+    <Copyright>Copyright © 2020</Copyright>
+    <Authors>Dennise Catolos</Authors>
+    <Product>FileSystemMonitor</Product>
   </PropertyGroup>
 
   <ItemGroup>
