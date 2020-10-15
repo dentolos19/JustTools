@@ -1,0 +1,35 @@
+﻿@page "/guidgenerator"
+
+<h3>GUID Generator</h3>
+
+@inject IJSRuntime JsRuntime
+
+<div class="form-group">
+    <div class="form-inline">
+        <input class="form-control" readonly value="@_guid" />
+        <button class="btn btn-primary" @onclick="CopyPassword">Copy</button>
+    </div>
+</div>
+
+<button class="form-control" type="submit" @onclick="GenerateGuid">Generate GUID</button>
+
+@code {
+
+    private string _guid;
+
+    protected override void OnInitialized()
+    {
+        GenerateGuid();
+    }
+
+    private void GenerateGuid()
+    {
+        _guid = Guid.NewGuid().ToString();
+    }
+
+    private async void CopyPassword()
+    {
+        await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", _guid);
+    }
+
+}
