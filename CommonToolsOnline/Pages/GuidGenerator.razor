@@ -14,10 +14,10 @@
 <EditForm Model="@_form" OnValidSubmit="@GenerateGuid">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <div class="form-group">
-        <label>Add Braces</label>
-        <InputText class="form-control" @bind-Value="_form.AddBraces" />
-    </div>
+    <label>
+        <InputCheckbox @bind-Value="_form.AddBraces" />
+        Add Braces
+    </label>
     <button class="form-control" type="submit">Generate GUID</button>
 </EditForm>
 
