@@ -3,29 +3,37 @@
 <h3>Text Formatter</h3>
 
 <EditForm Model="@_form" OnValidSubmit="@FormatText">
-    <dataannotationsvalidator />
-    <validationsummary />
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <div class="form-group">
-        <InputSelect class="form-control" @bind-Value="@_form.Format">
+        Format Type
+        <InputSelect class="form-control" @bind-Value="@_form.FormatType">
 
             <optgroup label="Common Formatting Options" />
 
             <option value="Reverse">Reverse</option>
+            <option value="UrlFormat">URL Format</option>
 
             <optgroup label="Advanced Formatting Options" />
 
-            <option value="ToURLFormat">Convert To URL Format</option>
-            <option value="FromURLFormat">Convert From URL Format</option>
-
-            <optgroup label="Encoding/Decoding Options" />
-
-            <option value="EncodeBase64">Encode To Base64</option>
-            <option value="DecodeBase64">Decode From Base64</option>
+            <option value="Base64">Base64</option>
 
         </InputSelect>
     </div>
     <div class="form-group">
-        <InputTextArea class="form-control" @bind-Value="_form.Text" />
+        Format Direction
+        <InputSelect class="form-control" @bind-Value="@_form.FormatDirection">
+            <option value="BeforeToAfter">Before To After (Normal)</option>
+            <option value="AfterToBefore">After To Before (Backwards)</option>
+        </InputSelect>
+    </div>
+    <div class="form-group">
+        Before
+        <InputTextArea class="form-control" @bind-Value="_form.BeforeText" />
+    </div>
+    <div class="form-group">
+        After
+        <InputTextArea class="form-control" @bind-Value="_form.AfterText" />
     </div>
     <button class="form-control" type="submit">Format Text</button>
 </EditForm>
@@ -41,34 +49,37 @@
 
     private void FormatText()
     {
-        switch (_form.Format.ToLower())
+        var type = _form.FormatType;
+        var direction = _form.FormatDirection;
+        if (direction == "BeforeToAfter")
         {
-
-            // Common Formatting Options
-
-            case "reverse":
-                _form.Text = new string(_form.Text.Reverse().ToArray());
-                break;
-
-            // Advanced Formatting Options
-
-            case "tourlformat":
-                _form.Text = Uri.EscapeDataString(_form.Text);
-                break;
-
-            case "fromurlformat":
-                _form.Text = Uri.UnescapeDataString(_form.Text);
-                break;
-
-            // Encoding/Decoding Options
-
-            case "encodebase64":
-                _form.Text = Utilities.EncodeToBase64(_form.Text);
-                break;
-
-            case "decodebase64":
-                _form.Text = Utilities.DecodeFromBase64(_form.Text);
-                break;
+            switch (type)
+            {
+                case "Reverse":
+                    _form.AfterText = new string(_form.BeforeText.Reverse().ToArray());
+                    break;
+                case "UrlFormat":
+                    _form.AfterText = Uri.EscapeDataString(_form.BeforeText);
+                    break;
+                case "Base64":
+                    _form.AfterText = Utilities.EncodeToBase64(_form.BeforeText);
+                    break;
+            }
+        }
+        else if (direction == "AfterToBefore")
+        {
+            switch (type)
+            {
+                case "Reverse":
+                    _form.BeforeText = new string(_form.AfterText.Reverse().ToArray());
+                    break;
+                case "UrlFormat":
+                    _form.BeforeText = Uri.UnescapeDataString(_form.AfterText);
+                    break;
+                case "Base64":
+                    _form.BeforeText = Utilities.DecodeFromBase64(_form.AfterText);
+                    break;
+            }
         }
     }
 

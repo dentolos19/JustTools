@@ -35,6 +35,8 @@
     private void GenerateGuid()
     {
         _guid = Guid.NewGuid().ToString();
+        if (_form.AddBraces)
+            _guid = "{" + _guid + "}";
     }
 
     private async void CopyGuid()

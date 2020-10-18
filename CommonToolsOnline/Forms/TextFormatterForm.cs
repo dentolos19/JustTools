@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CommonToolsOnline.Forms
+﻿namespace CommonToolsOnline.Forms
 {
 
     public class TextFormatterForm
     {
 
-        public string Format { get; set; } = "Reverse";
+        public string FormatType { get; set; } = "Reverse";
 
-        [Required(ErrorMessage = "You must specify text to format.")]
-        public string Text { get; set; }
+        public string FormatDirection { get; set; } = "BeforeToAfter";
+
+        public string BeforeText { get; set; }
+
+        public string AfterText { get; set; }
 
     }
 
