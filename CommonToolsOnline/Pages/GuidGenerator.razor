@@ -7,18 +7,28 @@
 <div class="form-group">
     <div class="form-inline">
         <input class="form-control" readonly value="@_guid" />
-        <button class="btn btn-primary" @onclick="CopyPassword">Copy</button>
+        <button class="btn btn-primary" @onclick="CopyGuid">Copy</button>
     </div>
 </div>
 
-<button class="form-control" type="submit" @onclick="GenerateGuid">Generate GUID</button>
+<EditForm Model="@_form" OnValidSubmit="@GenerateGuid">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label>Add Braces</label>
+        <InputText class="form-control" @bind-Value="_form.AddBraces" />
+    </div>
+    <button class="form-control" type="submit">Generate GUID</button>
+</EditForm>
 
 @code {
 
     private string _guid;
+    private GuidGeneratorForm _form;
 
     protected override void OnInitialized()
     {
+        _form = new GuidGeneratorForm();
         GenerateGuid();
     }
 
@@ -27,7 +37,7 @@
         _guid = Guid.NewGuid().ToString();
     }
 
-    private async void CopyPassword()
+    private async void CopyGuid()
     {
         await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", _guid);
     }
