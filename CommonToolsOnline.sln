@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonToolsOnline", "CommonToolsOnline\CommonToolsOnline.csproj", "{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cto.MassFileRename", "Cto.MassFileRename\Cto.MassFileRename.csproj", "{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cto.FileSystemMonitor", "Cto.FileSystemMonitor\Cto.FileSystemMonitor.csproj", "{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F03632F-579F-4C1D-9275-E73FF3ECAE7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A26A5D4-6275-45AF-BD72-2127DEB25DD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D150CC6C-EF24-48D7-A5F0-4DC50DF8CD4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
