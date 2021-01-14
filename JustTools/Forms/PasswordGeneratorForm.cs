@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonToolsOnline.Forms
+namespace JustTools.Forms
 {
 
     public class PasswordGeneratorForm

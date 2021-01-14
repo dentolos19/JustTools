@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CommonToolsOnline
+namespace JustTools
 {
 
     public static class Utilities

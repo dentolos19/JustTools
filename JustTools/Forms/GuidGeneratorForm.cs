@@ -1,4 +1,4 @@
-﻿namespace CommonToolsOnline.Forms
+﻿namespace JustTools.Forms
 {
 
     public class GuidGeneratorForm
