@@ -10,7 +10,7 @@ jobs:
       with:
         dotnet-version: '5.0.x'
     - name: Publish Project
-      run: dotnet publish ./JustTools/JustTools.csproj --configuration Release --output ./output
+      run: dotnet publish ./JustMyTools/JustMyTools.csproj --configuration Release --output ./output
     - name: Disable Jekyll
       run: touch ./output/wwwroot/.nojekyll
     - name: Deploy To GitHub Pages

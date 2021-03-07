@@ -1,4 +1,4 @@
-﻿namespace JustTools.Forms
+﻿namespace JustMyTools.Forms
 {
 
     public class GuidGeneratorForm

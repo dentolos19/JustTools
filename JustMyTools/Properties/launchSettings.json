@@ -17,7 +17,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
-        "CommonToolsOnline": {
+        "Project": {
             "commandName": "Project",
             "launchBrowser": true,
             "inspectUri":
