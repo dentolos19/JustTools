@@ -54,10 +54,12 @@
     {
         var builder = new StringBuilder();
         var element = XElement.Parse(_form.Code);
-        var settings = new XmlWriterSettings();
-        settings.OmitXmlDeclaration = true;
-        settings.Indent = true;
-        settings.NewLineOnAttributes = true;
+        var settings = new XmlWriterSettings
+        {
+            OmitXmlDeclaration = true,
+            Indent = true,
+            NewLineOnAttributes = true
+        };
         using (var writer = XmlWriter.Create(builder, settings))
             element.Save(writer);
         _form.Code = builder.ToString();

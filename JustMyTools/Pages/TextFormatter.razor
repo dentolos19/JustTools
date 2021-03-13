@@ -3,18 +3,18 @@
 <h3>Text Formatter</h3>
 
 <EditForm Model="@_form" OnValidSubmit="@FormatText">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <div class="form-group">
         Format Type
         <InputSelect class="form-control" @bind-Value="@_form.FormatType">
 
-            <optgroup label="Common Formatting Options" />
+            <optgroup label="Common Formatting Options"/>
 
             <option value="Reverse">Reverse</option>
             <option value="UrlFormat">URL Format</option>
 
-            <optgroup label="Advanced Formatting Options" />
+            <optgroup label="Advanced Formatting Options"/>
 
             <option value="Base64">Base64</option>
 
@@ -29,11 +29,11 @@
     </div>
     <div class="form-group">
         Before
-        <InputTextArea class="form-control" @bind-Value="_form.BeforeText" />
+        <InputTextArea class="form-control" @bind-Value="_form.BeforeText"/>
     </div>
     <div class="form-group">
         After
-        <InputTextArea class="form-control" @bind-Value="_form.AfterText" />
+        <InputTextArea class="form-control" @bind-Value="_form.AfterText"/>
     </div>
     <button class="form-control" type="submit">Format Text</button>
 </EditForm>

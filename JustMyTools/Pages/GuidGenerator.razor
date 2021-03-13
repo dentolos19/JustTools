@@ -6,16 +6,16 @@
 
 <div class="form-group">
     <div class="form-inline">
-        <input class="form-control" readonly value="@_guid" />
+        <input class="form-control" readonly value="@_guid"/>
         <button class="btn btn-primary" @onclick="CopyGuid">Copy</button>
     </div>
 </div>
 
 <EditForm Model="@_form" OnValidSubmit="@GenerateGuid">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <label>
-        <InputCheckbox @bind-Value="_form.AddBraces" />
+        <InputCheckbox @bind-Value="_form.AddBraces"/>
         Add Braces
     </label>
     <button class="form-control" type="submit">Generate GUID</button>

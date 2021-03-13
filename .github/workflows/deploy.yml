@@ -12,7 +12,7 @@ jobs:
     - name: Publish Project
       run: dotnet publish ./JustMyTools/JustMyTools.csproj --configuration Release --output ./output
     - name: Update Base-Tag
-      run: sed -i 's/<base href="\/" \/>/<base href="\/JustMyTools\/"\/>/g' output/wwwroot/index.html
+      run: sed -i 's/<base href="\/"\/>/<base href="\/JustMyTools\/"\/>/g' ./output/wwwroot/index.html
     - name: Disable Jekyll
       run: touch ./output/wwwroot/.nojekyll
     - name: Deploy To GitHub Pages
