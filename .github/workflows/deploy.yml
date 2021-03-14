@@ -1,7 +1,7 @@
-name: Automatic Web Deploy
-on: [push]
+name: "Automatic Web Deploy"
+on: [push, pull_request]
 jobs:
-  build:
+  task:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
