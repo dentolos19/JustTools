@@ -17,7 +17,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
-        "Project": {
+        "JustMyTools": {
             "commandName": "Project",
             "launchBrowser": true,
             "inspectUri":
