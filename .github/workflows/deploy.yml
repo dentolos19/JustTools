@@ -1,4 +1,4 @@
-name: "Automatic Web Deploy"
+name: Automatic Web Deploy
 on: [push, pull_request]
 jobs:
   task:
@@ -8,7 +8,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1.7.2
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: 5.0.x
     - name: Publish Project
       run: dotnet publish ./JustMyTools/JustMyTools.csproj --configuration Release --output ./output
     - name: Update Base-Tag
