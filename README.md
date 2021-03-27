@@ -4,7 +4,7 @@
 
 </div>
 
-<h1 align="center">JustMyTools</h1>
+<h1 align="center">DentoTools</h1>
 
 <div align="center">
 

@@ -17,7 +17,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
-        "JustMyTools": {
+        "DentoLib": {
             "commandName": "Project",
             "launchBrowser": true,
             "inspectUri":

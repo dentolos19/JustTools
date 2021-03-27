@@ -1,4 +1,4 @@
-﻿namespace JustMyTools.Forms
+﻿namespace DentoTools.Forms
 {
 
     public class GuidGeneratorForm

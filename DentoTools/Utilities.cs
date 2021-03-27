@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace JustMyTools
+namespace DentoTools
 {
 
     public static class Utilities
