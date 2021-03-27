@@ -15,7 +15,7 @@ jobs:
     - name: Publish Project
       run: dotnet publish ./${PROJECT_NAME}/${PROJECT_NAME}.csproj -c Release -o ./output
     - name: Update Base-Tag
-      run: sed -i 's/<base href="\/"\/>/<base href="\/${PROJECT_NAME}\/"\/>/g' ./output/wwwroot/index.html
+      run: sed -i 's/<base href="\/"\/>/<base href="\/\${PROJECT_NAME}\/"\/>/g' ./output/wwwroot/index.html
     - name: Disable Jekyll
       run: touch ./output/wwwroot/.nojekyll
     - name: Deploy To GitHub Pages
@@ -24,5 +24,5 @@ jobs:
         ACCESS_TOKEN: ${ACCESS_TOKEN}
         BASE_BRANCH: main
         BRANCH: website
-        FOLDER: output/wwwroot
+        FOLDER: ./output/wwwroot
         SINGLE_COMMIT: true
