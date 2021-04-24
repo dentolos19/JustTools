@@ -9,28 +9,18 @@
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> About This Project
+                <span class="oi oi-question-mark" aria-hidden="true"></span> About This Project
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="ToggleGeneratorSubMenu">
-                <span class="oi oi-credit-card" aria-hidden="true"></span> Generators
+            <NavLink class="nav-link" href="password-generator">
+                <span class="oi oi-credit-card" aria-hidden="true"></span> Password Generator
             </NavLink>
-            @if (ExpandGeneratorSubMenu)
-            {
-        <ul class="nav flex-column">
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="password-generator">
-                    <span class="oi oi-credit-card" aria-hidden="true"></span> Password Generator
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="guid-generator">
-                    <span class="oi oi-credit-card" aria-hidden="true"></span> GUID Generator
-                </NavLink>
-            </li>
-        </ul>
-            }
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="guid-generator">
+                <span class="oi oi-code" aria-hidden="true"></span> GUID Generator
+            </NavLink>
         </li>
     </ul>
 </div>
@@ -39,11 +29,12 @@
 {
 
     private bool CollapseNavMenu { get; set; } = true;
-    private bool ExpandGeneratorSubMenu { get; set; }
 
     private string NavMenuCssClass => CollapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu() => CollapseNavMenu = !CollapseNavMenu;
-    private void ToggleGeneratorSubMenu() => ExpandGeneratorSubMenu = !ExpandGeneratorSubMenu;
+    private void ToggleNavMenu()
+    {
+        CollapseNavMenu = !CollapseNavMenu;
+    }
 
 }

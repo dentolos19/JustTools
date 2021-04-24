@@ -4,8 +4,8 @@
 
 <SfTextBox Readonly="true" @bind-Value="OutputGuid"/>
 
-<br />
-<br />
+<br/>
+<br/>
 
 <SfCheckBox Label="Use Uppercase" @bind-Checked="UseUppercase"/>
 <br/>
@@ -24,8 +24,8 @@
     private string OutputGuid { get; set; }
 
     private bool UseUppercase { get; set; }
-    private bool UseHyphens { get; set; } = true;
-    private bool AddBraces { get; set; } = true;
+    private bool UseHyphens { get; } = true;
+    private bool AddBraces { get; } = true;
 
     protected override void OnInitialized()
     {
