@@ -1,14 +1,23 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
 
-<div class="sidebar">
+<div class="sidebar" style="position: fixed; z-index: 1200">
     <NavMenu/>
 </div>
 
 <div class="main">
-    <div class="top-row px-4">
-        <a class="ml-md-auto" href="https://github.com/dentolos19/DentoTools" target="_blank">GitHub</a>
+    <div class="top-row px-4" style="padding-top: 0px; z-index: 1111;">
+        <a href="https://dentolos19.github.io">Home</a>
+        <a href="https://github.com/dentolos19/DentoTools" target="_blank">GitHub</a>
     </div>
     <div class="content px-4">
         @Body
     </div>
 </div>
+
+<style>
+    .sidebar
+    {
+        min-width: 300px;
+        width: 300px;
+    }
+</style>

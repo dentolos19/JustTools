@@ -1,24 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>DentoTools</title>
     <script type="text/javascript">
         var segmentCount = 0;
-        var l = window.location;
-        l.replace(
-            l.protocol +
-            '//' +
-            l.hostname +
-            (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + segmentCount).join('/') +
-            '/?p=/' +
-            l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
-            (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash
+        var windowLocation = window.location;
+        windowLocation.replace(
+            windowLocation.protocol + '//' +
+            windowLocation.hostname +
+            (windowLocation.port ? ':' + windowLocation.port : '') +
+            windowLocation.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
+            windowLocation.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+            (windowLocation.search ? '&q=' + windowLocation.search.slice(1).replace(/&/g, '~and~') : '') +
+            windowLocation.hash
         );
     </script>
 </head>
-<body>
-</body>
 </html>

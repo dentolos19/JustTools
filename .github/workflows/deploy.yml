@@ -1,8 +1,8 @@
 name: Automatic Web Deploy
 on: [push]
 env:
-  PROJECT_NAME: DentoTools
-  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  WORKFLOWS_TOKEN: ${{ secrets.WORKFLOWS_TOKEN }}
+  LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
 jobs:
   task:
     runs-on: ubuntu-latest
@@ -12,14 +12,15 @@ jobs:
       uses: actions/setup-dotnet@v1.7.2
       with:
         dotnet-version: 5.0.x
+    - run: sed --in-place '{LICENSE_KEY}/${LICENSE_KEY}' ./DentoTools/Program.cs
     - name: Publish Project
-      run: dotnet publish ./${PROJECT_NAME}/${PROJECT_NAME}.csproj --configuration Release --output ./output
-    - run: sed -i 's/<base href="\/"\/>/<base href="\/'${PROJECT_NAME}'\/"\/>/g' ./output/wwwroot/index.html
+      run: dotnet publish ./DentoTools/DentoTools.csproj --configuration Release --output ./output
+    - run: sed --in-place 's/<base href="\/"\/>/<base href="\/DentoTools\/"\/>/g' ./output/wwwroot/index.html
     - run: touch ./output/wwwroot/.nojekyll
     - name: Deploy To GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        ACCESS_TOKEN: ${ACCESS_TOKEN}
+        ACCESS_TOKEN: ${WORKFLOWS_TOKEN}
         BASE_BRANCH: main
         BRANCH: website
         FOLDER: ./output/wwwroot

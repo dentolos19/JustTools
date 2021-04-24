@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentoTools", "DentoTools\DentoTools.csproj", "{72D7C7D9-3A5A-4528-98E6-202CE9ADC3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DentoTools", "DentoTools\DentoTools.csproj", "{D11BDEC3-0C8B-474B-B01A-CC5096C30DBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72D7C7D9-3A5A-4528-98E6-202CE9ADC3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72D7C7D9-3A5A-4528-98E6-202CE9ADC3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72D7C7D9-3A5A-4528-98E6-202CE9ADC3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72D7C7D9-3A5A-4528-98E6-202CE9ADC3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D11BDEC3-0C8B-474B-B01A-CC5096C30DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D11BDEC3-0C8B-474B-B01A-CC5096C30DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D11BDEC3-0C8B-474B-B01A-CC5096C30DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D11BDEC3-0C8B-474B-B01A-CC5096C30DBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {84C922E3-24DD-4EDE-8867-9600F4C8AFD5}
+		SolutionGuid = {AFBF2475-6773-443C-91BA-DFAE47FCBAAD}
 	EndGlobalSection
 EndGlobal
