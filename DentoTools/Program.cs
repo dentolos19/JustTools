@@ -9,7 +9,7 @@ using Syncfusion.Licensing;
 namespace DentoTools
 {
 
-    public class Program
+    public static class Program
     {
 
         public static async Task Main(string[] args)
@@ -18,7 +18,7 @@ namespace DentoTools
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
             builder.Services.AddSyncfusionBlazor();
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             await builder.Build().RunAsync();
         }
 
