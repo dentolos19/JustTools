@@ -12,7 +12,7 @@ jobs:
       uses: actions/setup-dotnet@v1.7.2
       with:
         dotnet-version: 5.0.x
-    - run: sed --in-place '{LICENSE_KEY}/${LICENSE_KEY}' ./DentoTools/Program.cs
+    - run: sed --in-place 's/<LICENSE_KEY>/'${LICENSE_KEY}'/g' ./DentoTools/Program.cs
     - name: Publish Project
       run: dotnet publish ./DentoTools/DentoTools.csproj --configuration Release --output ./output
     - run: sed --in-place 's/<base href="\/"\/>/<base href="\/DentoTools\/"\/>/g' ./output/wwwroot/index.html

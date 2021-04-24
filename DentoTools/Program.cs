@@ -14,7 +14,7 @@ namespace DentoTools
 
         public static async Task Main(string[] args)
         {
-            SyncfusionLicenseProvider.RegisterLicense("{LICENSE_KEY}"); 
+            SyncfusionLicenseProvider.RegisterLicense("<LICENSE_KEY>"); 
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
             builder.Services.AddSyncfusionBlazor();
