@@ -1,0 +1,47 @@
+﻿@page "/guid-generator"
+
+<h3>GUID Generator</h3>
+
+<SfTextBox Readonly="true" @bind-Value="OutputGuid"/>
+
+<br />
+<br />
+
+<SfCheckBox Label="Use Uppercase" @bind-Checked="UseUppercase"/>
+<br/>
+<SfCheckBox Label="Use Hyphens" @bind-Checked="UseHyphens"/>
+<br/>
+<SfCheckBox Label="Add Braces" @bind-Checked="AddBraces"/>
+
+<br/>
+<br/>
+
+<SfButton IsPrimary="true" @onclick="GenerateGuid">Generate GUID</SfButton>
+
+@code
+{
+
+    private string OutputGuid { get; set; }
+
+    private bool UseUppercase { get; set; }
+    private bool UseHyphens { get; set; } = true;
+    private bool AddBraces { get; set; } = true;
+
+    protected override void OnInitialized()
+    {
+        GenerateGuid();
+    }
+
+    private void GenerateGuid()
+    {
+        var guid = Guid.NewGuid().ToString();
+        if (UseUppercase)
+            guid = guid.ToUpper();
+        if (!UseHyphens)
+            guid = guid.Replace("-", string.Empty);
+        if (AddBraces)
+            guid = "{" + guid + "}";
+        OutputGuid = guid;
+    }
+
+}

@@ -9,13 +9,28 @@
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi oi-home" aria-hidden="true"></span> About This Project
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="password-generator">
-                <span class="oi oi-credit-card" aria-hidden="true"></span> Password Generator
+            <NavLink class="nav-link" @onclick="ToggleGeneratorSubMenu">
+                <span class="oi oi-credit-card" aria-hidden="true"></span> Generators
             </NavLink>
+            @if (ExpandGeneratorSubMenu)
+            {
+        <ul class="nav flex-column">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="password-generator">
+                    <span class="oi oi-credit-card" aria-hidden="true"></span> Password Generator
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="guid-generator">
+                    <span class="oi oi-credit-card" aria-hidden="true"></span> GUID Generator
+                </NavLink>
+            </li>
+        </ul>
+            }
         </li>
     </ul>
 </div>
@@ -23,13 +38,12 @@
 @code
 {
 
-    private bool _collapseNavMenu = true;
+    private bool CollapseNavMenu { get; set; } = true;
+    private bool ExpandGeneratorSubMenu { get; set; }
 
-    private string NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
+    private string NavMenuCssClass => CollapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
-    {
-        _collapseNavMenu = !_collapseNavMenu;
-    }
+    private void ToggleNavMenu() => CollapseNavMenu = !CollapseNavMenu;
+    private void ToggleGeneratorSubMenu() => ExpandGeneratorSubMenu = !ExpandGeneratorSubMenu;
 
 }
