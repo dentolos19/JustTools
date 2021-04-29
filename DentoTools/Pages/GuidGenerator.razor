@@ -1,5 +1,7 @@
 ﻿@page "/guid-generator"
 
+@using System
+
 <h3>GUID Generator</h3>
 
 <SfTextBox Readonly="true" @bind-Value="OutputGuid"/>
@@ -24,8 +26,8 @@
     private string OutputGuid { get; set; }
 
     private bool UseUppercase { get; set; }
-    private bool UseHyphens { get; } = true;
-    private bool AddBraces { get; } = true;
+    private bool UseHyphens { get; set; } = true;
+    private bool AddBraces { get; set; } = true;
 
     protected override void OnInitialized()
     {
