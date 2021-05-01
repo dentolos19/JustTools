@@ -1,0 +1,96 @@
+﻿@page "/web-api-tester"
+@using System.Collections.ObjectModel
+
+<h3>Web API Tester</h3>
+
+<label>Target Address</label>
+<SfTextBox @bind-Value="TargetAddress"/>
+
+<br/>
+<br/>
+
+<label>Headers</label>
+<SfListView DataSource="HeadersCollection">
+    <ListViewFieldSettings TValue="Data"/>
+    <ListViewTemplates TValue="Data">
+        <Template>
+            @{
+                <div>
+                    <SfTextBox @bind-Value="context.Name"/>
+                    <SfTextBox @bind-Value="context.Value"/>
+                    <span class="oi oi-delete" @onclick="@(() => { DeleteHeader(context); })"></span>
+                </div>
+            }
+        </Template>
+    </ListViewTemplates>
+</SfListView>
+<SfButton @onclick="AddHeader">Add Header</SfButton>
+
+<br/>
+<br/>
+
+<label>Parameters</label>
+<SfListView DataSource="ParametersCollection">
+    <ListViewFieldSettings TValue="Data"/>
+    <ListViewTemplates TValue="Data">
+        <Template>
+            @{
+                <div>
+                    <SfTextBox @bind-Value="context.Name"/>
+                    <SfTextBox @bind-Value="context.Value"/>
+                    <span class="oi oi-delete" @onclick="@(() => { DeleteParameter(context); })"></span>
+                </div>
+            }
+        </Template>
+    </ListViewTemplates>
+</SfListView>
+<SfButton @onclick="AddParameter">Add Parameter</SfButton>
+
+<br/>
+<br/>
+
+<SfButton>Get</SfButton>
+
+@code
+{
+
+    private record Data
+    {
+
+        public Data(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        public string Name { get; set; }
+        public string Value { get; set; }
+
+    }
+
+    private string TargetAddress { get; set; }
+
+    private ObservableCollection<Data> HeadersCollection { get; } = new();
+    private ObservableCollection<Data> ParametersCollection { get; } = new();
+
+    private void AddHeader()
+    {
+        HeadersCollection.Add(new Data("New Item", "Hello World!"));
+    }
+
+    private void DeleteHeader(Data data)
+    {
+        HeadersCollection.RemoveAt(HeadersCollection.ToList().FindIndex(index => index == data));
+    }
+
+    private void AddParameter()
+    {
+        ParametersCollection.Add(new Data("New Item", "Hello World!"));
+    }
+
+    private void DeleteParameter(Data data)
+    {
+        ParametersCollection.RemoveAt(ParametersCollection.ToList().FindIndex(index => index == data));
+    }
+
+}
