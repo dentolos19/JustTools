@@ -10,46 +10,63 @@
 <br/>
 
 <label>Headers</label>
-<SfListView DataSource="HeadersCollection">
-    <ListViewFieldSettings TValue="Data"/>
-    <ListViewTemplates TValue="Data">
-        <Template>
-            @{
-                <div>
-                    <SfTextBox @bind-Value="context.Name"/>
-                    <SfTextBox @bind-Value="context.Value"/>
-                    <span class="oi oi-delete" @onclick="@(() => { DeleteHeader(context); })"></span>
-                </div>
-            }
-        </Template>
-    </ListViewTemplates>
-</SfListView>
+<table class="table">
+    <tr>
+        <th>Header Name</th>
+        <th>Header Value</th>
+    </tr>
+    @foreach (var header in HeadersCollection)
+    {
+        <tr>
+            <td>
+                <SfTextBox @bind-Value="@header.Name"/>
+            </td>
+            <td>
+                <SfTextBox @bind-Value="@header.Value"/>
+            </td>
+            <td>
+                <span class="oi oi-delete" @onclick="@(() => { DeleteHeader(header); })"></span>
+            </td>
+        </tr>
+    }
+</table>
 <SfButton @onclick="AddHeader">Add Header</SfButton>
 
 <br/>
 <br/>
 
 <label>Parameters</label>
-<SfListView DataSource="ParametersCollection">
-    <ListViewFieldSettings TValue="Data"/>
-    <ListViewTemplates TValue="Data">
-        <Template>
-            @{
-                <div>
-                    <SfTextBox @bind-Value="context.Name"/>
-                    <SfTextBox @bind-Value="context.Value"/>
-                    <span class="oi oi-delete" @onclick="@(() => { DeleteParameter(context); })"></span>
-                </div>
-            }
-        </Template>
-    </ListViewTemplates>
-</SfListView>
+<table class="table">
+    <tr>
+        <th>Parameter Name</th>
+        <th>Parameter Value</th>
+    </tr>
+    @foreach (var parameter in ParametersCollection)
+    {
+        <tr>
+            <td>
+                <SfTextBox @bind-Value="@parameter.Name"/>
+            </td>
+            <td>
+                <SfTextBox @bind-Value="@parameter.Value"/>
+            </td>
+            <td>
+                <span class="oi oi-delete" @onclick="@(() => { DeleteParameter(parameter); })"></span>
+            </td>
+        </tr>
+    }
+</table>
 <SfButton @onclick="AddParameter">Add Parameter</SfButton>
 
 <br/>
 <br/>
 
-<SfButton>Get</SfButton>
+<SfButton @onclick="SendPostRequest">Post</SfButton>
+<SfButton @onclick="SendGetRequest">Get</SfButton>
+
+<SfToast @ref="_toast" Timeout="5000">
+    <ToastPosition X="Right"/>
+</SfToast>
 
 @code
 {
@@ -68,10 +85,22 @@
 
     }
 
+    private SfToast _toast;
+
     private string TargetAddress { get; set; }
 
     private ObservableCollection<Data> HeadersCollection { get; } = new();
     private ObservableCollection<Data> ParametersCollection { get; } = new();
+
+    private async void ShowToastNotification(string title, string content)
+    {
+        await _toast.Show(new ToastModel
+        {
+            Title = title,
+            Content = content
+        });
+    }
+
 
     private void AddHeader()
     {
@@ -91,6 +120,16 @@
     private void DeleteParameter(Data data)
     {
         ParametersCollection.RemoveAt(ParametersCollection.ToList().FindIndex(index => index == data));
+    }
+
+    private void SendPostRequest()
+    {
+        ShowToastNotification("Post Request", "This function doesn't work yet!");
+    }
+
+    private void SendGetRequest()
+    {
+        ShowToastNotification("Get Request", "This function doesn't work yet!");
     }
 
 }
