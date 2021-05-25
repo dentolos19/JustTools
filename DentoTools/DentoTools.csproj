@@ -9,7 +9,6 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.5" PrivateAssets="all"/>
 		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="19.1.0.58"/>
 		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="19.1.0.58"/>
-		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="19.1.0.58"/>
 		<PackageReference Include="System.Net.Http.Json" Version="5.0.0"/>
 	</ItemGroup>
 
