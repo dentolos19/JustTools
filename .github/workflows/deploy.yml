@@ -1,25 +1,38 @@
 name: Automatic Web Deploy
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+    - main
 env:
-  LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
+  SYNCFUSION_LICENSE_KEY: ${{ secrets.SYNCFUSION_LICENSE_KEY }}
 jobs:
   task:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4
-    - uses: actions/setup-dotnet@v1.8.0
+    -
+      name: Checkout Repository
+      uses: actions/checkout@v2
+    -
+      name: Setup .NET
+      uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: 5.0.x
-    - run: sed --in-place 's/<LICENSE_KEY>/'${LICENSE_KEY}'/g' ./DentoTools/Program.cs
-    - run: dotnet publish ./DentoTools/DentoTools.csproj --configuration Release --output ./output
-    - run: sed --in-place 's/<base href="\/"\/>/<base href="\/DentoTools\/"\/>/g' ./output/wwwroot/index.html
-    - run: touch ./output/wwwroot/.nojekyll
-    - uses: JamesIves/github-pages-deploy-action@4.1.3
+    -
+      name: Publish Website
+      run: dotnet publish ./DentoTools/DentoTools.csproj --configuration Release --output ./output
+    -
+      name: Insert Syncfusion License Key
+      run: sed --in-place 's/<LICENSE_KEY>/'${LICENSE_KEY}'/g' ./DentoTools/Program.cs
+    - 
+      name: Fix BaseURL
+      run: sed --in-place 's/<base href="\/"\/>/<base href="\/DentoTools\/"\/>/g' ./output/wwwroot/index.html
+    - 
+      name: Disable Jekyll
+      run: touch ./output/wwwroot/.nojekyll
+    -
+      name: Deploy Website
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: website
         folder: ./output/wwwroot
-        single_commit: true
+        single-commit: true

@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Syncfusion.Blazor;
-#if !DEBUG
-using Syncfusion.Licensing;
-#endif
 
 namespace DentoTools
 {
@@ -17,7 +14,7 @@ namespace DentoTools
         public static async Task Main(string[] args)
         {
             #if !DEBUG
-            SyncfusionLicenseProvider.RegisterLicense("<LICENSE_KEY>"); 
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("<LICENSE_KEY>"); 
             #endif
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");

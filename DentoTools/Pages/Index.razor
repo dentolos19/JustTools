@@ -1,15 +1,13 @@
 ﻿@page "/"
 
-<h3>About This Project</h3>
+@inject NavigationManager _navigationManager
 
-<p>
-    Welcome to DentoTools! This website is made with a purpose of providing common 
-    and essentials tools that may help in specific problems!
-</p>
+@code
+{
 
-<p>
-    The project is still in an early state where there isn't much tools provided. 
-    So I want to enlist people who can help in adding new tools into this 
-    project! Please contribute by forking and submitting a pull request via 
-    <a href="https://github.com/dentolos19/DentoTools">this project's repository</a>.
-</p>
+    protected override void OnInitialized()
+    {
+        _navigationManager.NavigateTo("password-generator");
+    }
+
+}
