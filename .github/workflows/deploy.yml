@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     -
+      name: Insert Syncfusion License Key
+      run: sed --in-place 's/<LICENSE_KEY>/'${SYNCFUSION_LICENSE_KEY}'/g' ./DentoTools/Program.cs
+    -
       name: Publish Website
       run: dotnet publish ./DentoTools/DentoTools.csproj --configuration Release --output ./output
-    -
-      name: Insert Syncfusion License Key
-      run: sed --in-place 's/<LICENSE_KEY>/'${LICENSE_KEY}'/g' ./DentoTools/Program.cs
     - 
       name: Fix BaseURL
       run: sed --in-place 's/<base href="\/"\/>/<base href="\/DentoTools\/"\/>/g' ./output/wwwroot/index.html
